@@ -1,0 +1,15 @@
+---
+title: "final project"
+author: "Michael Wagnon"
+date: "5/19/2020"
+output: html_document
+---
+
+```{r}
+library(pacman)
+p_load(tidyverse,magrittr,dplyr,rdrobust)
+```
+
+```{r}
+
+```
