@@ -10,6 +10,33 @@ library(pacman)
 p_load(tidyverse,magrittr,dplyr,rdrobust)
 ```
 
+
+
+I think we should do an event study, it seems like the easiest/most sensible option given the data we have. I cleaned up the dataset a little bit and filter to the dates we'd need for an event study. Really we just need to group the different rows into weeks, create dummy variables for weeks before/after the lockdown order (March 30th) and then run a lil regression. We could also maybe split the types of speeding into normal and crazy (like 100MPH+ or whatever). The Metrics lecture about event studies lays it out pretty nicely. 
+
+
 ```{r}
+pacman::p_load(dplyr, tidyverse, lubridate, janitor)
+traffic <- read_csv("Traffic_Violations.csv")
+
+
+#clean column names and filter date into desired timeframe 
+traffic_df <- traffic %>%
+              clean_names() %>%
+              mutate(date_of_stop = as.character(date_of_stop),
+                     date_of_stop = mdy(date_of_stop)) %>%
+              filter(date_of_stop >= "2020/02/01" & date_of_stop <= "2020/05/18") 
+
+#select necessary columns
+traffic_df <- traffic_df %>%
+                select(date_of_stop, description, alcohol, race, gender)
+             
+#filter for speeding citations
+speed_df <- filter(traffic_df, grepl('IN EXCESS|EXCEEDING', description)) 
+
+#filter out weird citations for trailers in excess of something
+speed_df <- filter(speed_df, !grepl('OPERATE COMBO', description))
+
+
 
 ```
