@@ -25,7 +25,7 @@ traffic_df <- traffic %>%
               clean_names() %>%
               mutate(date_of_stop = as.character(date_of_stop),
                      date_of_stop = mdy(date_of_stop)) %>%
-              filter(date_of_stop >= "2020/02/03" & date_of_stop <= "2020/05/18") 
+              filter(date_of_stop >= "2020/01/13" & date_of_stop <= "2020/05/18") 
 
 #select necessary columns
 traffic_df <- traffic_df %>%
@@ -41,4 +41,44 @@ speed_df <- filter(speed_df, !grepl('OPERATE COMBO', description))
 speed_df <- speed_df %>%
               mutate(week_bin = cut(date_of_stop, breaks = "1 week"))
 
+#make variable of count of each week to make things easier
+
+speed_df$week <- speed_df$week_bin 
+levels(speed_df$week) <- c(seq(1,18,1))
+
+
+#count number of speeding citations given in each bin
+speed <- speed_df %>%
+            group_by(week) %>%
+            summarise(speeding = length(description))
+
+#make dummy variables for time periods before and after event
+speed <- speed %>%
+                mutate(r_neg8 = ifelse(week == "3", 1, 0),
+                       r_neg7 = ifelse(week == "4", 1, 0),
+                       r_neg6 = ifelse(week == "5", 1, 0),
+                       r_neg5 = ifelse(week == "6", 1, 0),
+                       r_neg4 = ifelse(week == "7", 1, 0),
+                       r_neg3 = ifelse(week == "8", 1, 0),
+                       r_neg2 = ifelse(week == "9", 1, 0),
+                       r_neg1 = ifelse(week == "10", 1, 0),
+                       r_0 = ifelse(week == "11", 1, 0),
+                       r_1 = ifelse(week == "12", 1, 0),
+                       r_2 = ifelse(week == "13", 1, 0),
+                       r_3 = ifelse(week == "14", 1, 0),
+                       r_4 = ifelse(week == "15", 1, 0),
+                       r_5 = ifelse(week == "16", 1, 0),
+                       r_6 = ifelse(week == "17", 1, 0),
+                       r_7 = ifelse(week == "18", 1, 0),
+                       r_not = ifelse(week == "1" | week == "2", 1, 0))
+
+#run event study regression
+
+speed_lm <- lm(speeding ~ r_neg8 + r_neg7 + r_neg6 + r_neg5 + r_neg4 + r_neg3 + r_neg2 + r_neg1 + 
+                    r_0 + r_1 + r_2 + r_3 + r_4 + r_5 + r_6 + r_7, data = speed)
+
+summary(speed_lm)
+
+
+#COOL NOTHING IS SIGNIFICANT AND I ALSO DON'T KNOW IF I DID IT RIGHT
 ```
