@@ -1,0 +1,49 @@
+---
+title: "Liz does stuff"
+author: "Elizabeth Sorensen Montoya"
+date: "5/24/2020"
+output: html_document
+---
+
+
+
+```{r}
+pacman::p_load(dplyr, tidyverse, janitor, lubridate)
+
+#load data and clean names
+years_df <- read.csv("multiyear.csv") %>%
+              clean_names()
+
+#select necessary columns and convert date to date
+years <- years_df %>% 
+                select(date_of_stop, description) %>%
+                mutate(date_of_stop = mdy(date_of_stop))
+
+
+#make separate variable for just year 
+years$year <- year(years$date_of_stop)
+
+#make variable that gives us day of the year
+years$day <- yday(years$date_of_stop)
+
+#group days into weeks 
+years <- years %>%
+              mutate(week_bin = cut(day, breaks = seq(0, 366, 7)))
+
+#make variable of count of each week to make things easier
+years$week <- years$week_bin 
+levels(years$week) <- c(seq(1,52,1))
+
+#make count of speeding citation by date 
+years <- years %>%
+            group_by(year, week) %>%
+            summarise(speeding = length(description))
+
+years$year <- as.factor(years$year)
+
+#make plot to see what's happening
+plot <- ggplot(years, aes(x = week, y = speeding, group = year)) +
+          geom_line(aes(color = year))
+
+plot
+```
