@@ -41,9 +41,36 @@ years <- years %>%
 
 years$year <- as.factor(years$year)
 
+#get rid of NA week (I think a leap year caused some probs, but overall everything is okay)
+years <- subset(years, )
+
 #make plot to see what's happening
 plot <- ggplot(years, aes(x = week, y = speeding, group = year)) +
           geom_line(aes(color = year))
 
 plot
+
+
+
+#do dumb stuff
+pre_covid <- years %>%
+              filter(year == "2015" | year == "2016" | year == "2017" | year =="2018" | 
+                       year == "2019") 
+
+covid_time <- years %>%
+                filter(year == "2020")
+
+#make average of all non-covid years
+pre_covid <- pre_covid %>%
+                group_by(week) %>%
+                summarise(speeding = mean(speeding))
+
+
+#plot it
+
+ave_plot <- ggplot(pre_covid, aes(x = week, y = speeding, group = 1)) +
+             geom_line() +
+              geom_line(data = covid_time, aes(x = week, y = speeding, color = "red"))
+
+ave_plot
 ```
