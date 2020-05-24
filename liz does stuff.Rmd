@@ -8,7 +8,7 @@ output: html_document
 
 
 ```{r}
-pacman::p_load(dplyr, tidyverse, janitor, lubridate)
+pacman::p_load(dplyr, tidyverse, janitor, lubridate, microsynth)
 
 #load data and clean names
 years_df <- read.csv("multiyear.csv") %>%
@@ -73,4 +73,74 @@ ave_plot <- ggplot(pre_covid, aes(x = week, y = speeding, group = 1)) +
               geom_line(data = covid_time, aes(x = week, y = speeding, color = "red"))
 
 ave_plot
+```
+
+
+
+```{r}
+
+#clean up date variables, make year and day of year variables
+multi_df <- years_df %>%
+            mutate(date_of_stop = mdy(date_of_stop),
+                   year = year(date_of_stop),
+                   day = yday(date_of_stop))
+
+#group days into weeks 
+multi <- multi_df %>%
+              mutate(week_bin = cut(day, breaks = seq(0, 366, 7)))
+
+#make variable of count of each week to make things easier
+multi$week <- multi$week_bin 
+levels(multi$week) <- c(seq(1,52,1))
+
+#make a new variable that counts the time periods in sequence
+multi <- multi %>%
+            arrange(year, week)
+            mutate(period = rownames(multi))
+
+
+#make count of speeding citation by driver city, car type, make, race, gender
+multi <- multi %>%
+            group_by(year, week, driver_city, vehicle_type, make, race, gender) %>%
+            summarise(speeding = length(description))
+
+
+#make an intervention dummy variable for times in sah
+multi <- multi %>%
+                mutate(intervention = ifelse(year == "2020" & as.numeric(week) >= "13", 1, 0))
+
+
+#make variable of sequential time perios
+multi$period <- ifelse(multi$year == "2015", multi$week,
+                ifelse(multi$year == "2016", (as.numeric(multi$week)+ 12),
+                ifelse(multi$year == "2017", (as.numeric(multi$week)+ 24),
+                ifelse(multi$year == "2018", (as.numeric(multi$week)+ 36),
+                ifelse(multi$year == "2019", (as.numeric(multi$week)+ 48),
+                ifelse(multi$year == "2020", (as.numeric(multi$week)+ 60), "lies"))))))
+
+
+
+#convert to df
+multi <- as.data.frame(multi)
+
+
+cov.var <- c("driver_city", "vehicle_type", "race", "gender", "make")
+
+match.out <- "speeding"
+
+sea1 <- microsynth(multi,
+                   idvar = "year", timevar = "week", intvar = "intervention",
+                   start.pre = 1, end.pre = 77, end.post = 99,
+                   match.out = "speeding", match.covar = "driver_city",
+                   result.var = "speeding", omnibus.var = "speeding",
+                   test = "lower",
+                   n.cores = min(parallel::detectCores(), 2))
+
+summary(sea1)
+
+plot_microsynth(sea1)
+
+
+
+
 ```
