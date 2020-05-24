@@ -42,15 +42,28 @@ years <- years %>%
 years$year <- as.factor(years$year)
 
 #get rid of NA week (I think a leap year caused some probs, but overall everything is okay)
-years <- subset(years, )
+years <- subset(years, week != "NA" )
 
 #make plot to see what's happening
 plot <- ggplot(years, aes(x = week, y = speeding, group = year)) +
-          geom_line(aes(color = year))
+          geom_line(aes(color = year, linetype = year)) +
+          scale_linetype_manual(values = c("twodash", "twodash", "twodash", "twodash", "twodash", "solid")) +
+          labs(x = "Week", y = "Speeding Citations", title = "Weekly Speeding Citations Given")  +
+          theme_bw() +
+          theme(axis.text.x = element_text(angle = 90), plot.title = element_text(face = "bold", hjust = 0.5))
 
 plot
 
+```
 
+
+
+
+
+
+
+
+```{r}
 
 #do dumb stuff
 pre_covid <- years %>%
