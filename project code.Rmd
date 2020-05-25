@@ -42,9 +42,16 @@ speed_df <- speed_df %>%
               mutate(week_bin = cut(date_of_stop, breaks = "1 week"))
 
 #make variable of count of each week to make things easier
-
 speed_df$week <- speed_df$week_bin 
 levels(speed_df$week) <- c(seq(1,18,1))
+
+
+#make a count of speeding citations for ggplot
+speed_df$speeding <- 1
+speed_df %>% group_by(week) %>% summarise(speeding = sum(speeding)) %>%
+  ggplot(aes(x=week,y=speeding)) +
+  geom_point()
+
 
 
 #count number of speeding citations given in each bin
@@ -73,7 +80,6 @@ speed <- speed %>%
                        r_not = ifelse(week == "1" | week == "2", 1, 0))
 
 #run event study regression
-
 speed_lm <- lm(speeding ~ r_neg8 + r_neg7 + r_neg6 + r_neg5 + r_neg4 + r_neg3 + r_neg2 + r_neg1 + 
                     r_0 + r_1 + r_2 + r_3 + r_4 + r_5 + r_6 + r_7, data = speed)
 
