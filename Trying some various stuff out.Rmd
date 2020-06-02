@@ -4,7 +4,6 @@ author: "Michael Wagnon"
 date: "6/1/2020"
 output: html_document
 ---
-
 ```{r}
 #Load packages
 library(pacman)
@@ -13,9 +12,7 @@ p_load(tidyverse,magrittr,dplyr,rdrobust,lubridate,janitor,huxtable,stringr)
 #Load the dataset
 traffic_df <- read.csv("multiyear.csv") %>%
               clean_names()
-```
 
-```{r}
 #select necessary columns and convert date to date
 traffic_df %<>% 
   mutate(date_of_stop = mdy(date_of_stop))
@@ -42,49 +39,57 @@ vio_df %<>%
   mutate(week_start = weeks(week-1) + ymd(str_c(year, "-01-01")))
 
 #Create an indicator for policy
-vio_df$sip <- ifelse(vio_df$week >= 10 & vio_df$year == 2020, 1, 0)
 
-vio_df$sip <- ifelse(vio_df$week_start >= as.Date("2020-03-05")-weeks(1), 1, 0)
+vio_df$sip <- ifelse(vio_df$week_start >= as.Date("2020-03-12")-days(3), 1, 0)
 
 #create an indicator for whether it is the year of covid-19
 vio_df$cov <- ifelse(vio_df$year == "2020", 1, 0)
 
 #create indicator for all years for the policy
-vio_df$sip_all <- ifelse(vio_df$week >= 10, 1, 0)
+vio_df$sip_all <- ifelse(vio_df$week >= 11, 1, 0)
 ```
 
 Here I run an event study regression like the one covered in the Metrics lecture. It shows the week that most business were closed down, and gatherings of 50+ were prohibited as significant where no other week is, but I'm not sure about the interpretation of it.
 ```{r}
 #create dummies for the 8 weeks on either side of the Covid-19 policy change
 vio_df %<>%
-  mutate(r_neg8 = ifelse(week == 2, 1, 0),
-         r_neg7 = ifelse(week == 3, 1, 0),
-         r_neg6 = ifelse(week == 4, 1, 0),
-         r_neg5 = ifelse(week == 5, 1, 0),
-         r_neg4 = ifelse(week == 6, 1, 0),
-         r_neg3 = ifelse(week == 7, 1, 0),
-         r_neg2 = ifelse(week == 8, 1, 0),
-         r_neg1 = ifelse(week == 9, 1, 0),
-         r_0 = ifelse(week == 10, 1, 0),
-         r_1 = ifelse(week == 11, 1, 0),
-         r_2 = ifelse(week == 12, 1, 0),
-         r_3 = ifelse(week == 13, 1, 0),
-         r_4 = ifelse(week == 14, 1, 0),
-         r_5 = ifelse(week == 15, 1, 0),
-         r_6 = ifelse(week == 16, 1, 0),
-         r_7 = ifelse(week == 17, 1, 0),
-         r_not = ifelse(week == 1 | week >= 18, 1,0))
+  mutate(r_neg8 = ifelse(week == 2 & year == 2020, 1, 0),
+         r_neg7 = ifelse(week == 3 & year == 2020, 1, 0),
+         r_neg6 = ifelse(week == 4 & year == 2020, 1, 0),
+         r_neg5 = ifelse(week == 5 & year == 2020, 1, 0),
+         r_neg4 = ifelse(week == 6 & year == 2020, 1, 0),
+         r_neg3 = ifelse(week == 7 & year == 2020, 1, 0),
+         r_neg2 = ifelse(week == 8 & year == 2020, 1, 0),
+         r_neg1 = ifelse(week == 9 & year == 2020, 1, 0),
+         r_0 = ifelse(week == 11 & year == 2020, 1, 0),
+         r_1 = ifelse(week == 12 & year == 2020, 1, 0),
+         r_2 = ifelse(week == 13 & year == 2020, 1, 0),
+         r_3 = ifelse(week == 14 & year == 2020, 1, 0),
+         r_4 = ifelse(week == 15 & year == 2020, 1, 0),
+         r_5 = ifelse(week == 16 & year == 2020, 1, 0),
+         r_6 = ifelse(week == 17 & year == 2020, 1, 0),
+         r_7 = ifelse(week == 18 & year == 2020, 1, 0),
+         r_8 = ifelse(week == 19 & year == 2020, 1, 0),
+         r_9 = ifelse(week == 20 & year == 2020, 1, 0),
+         r_10 = ifelse(week == 21 & year == 2020, 1, 0),
+         r_not = ifelse(week == 1 | week >= 18 & year ==2020, 1,
+                        ifelse(year != 2020, 1, 0)))
 
 #run event study regression
 speed_lm <- lm(violations ~ r_neg8 + r_neg7 + r_neg6 + r_neg5 + r_neg4 + r_neg3 + r_neg2 + r_neg1 + 
-                    r_0 + r_1 + r_2 + r_3 + r_4 + r_5 + r_6 + r_7, data = vio_df)
+                    r_0 + r_1 + r_2 + r_3 + r_4 + r_5 + r_6 + r_7 + r_8 + r_9 + r_10, data = vio_df)
 
 huxreg(speed_lm)
 
 
 for_graph <- speed_lm$coefficients %>% as.data.frame()
 for_graph$variable <- rownames(for_graph)
-rownames(for_graph) <- 0:16
+rownames(for_graph) <- 0:19
+for_graph$week <- rownames(for_graph)
+for_graph %<>% select(c(week,.)) %>% mutate(week = as.numeric(week))
+
+for_graph %>% ggplot(aes(x=week,y=.)) +
+  geom_point()
 ```
 
 Here is a super basic regression that will work if we really need it. 
