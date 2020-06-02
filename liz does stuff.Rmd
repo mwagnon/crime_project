@@ -108,7 +108,7 @@ levels(multi$week) <- c(seq(1,52,1))
 
 #make a new variable that counts the time periods in sequence
 multi <- multi %>%
-            arrange(year, week)
+            arrange(year, week) %>%
             mutate(period = rownames(multi))
 
 
@@ -134,7 +134,7 @@ multi$period <- ifelse(multi$year == "2015", multi$week,
 
 
 #convert to df
-multi <- as.data.frame(multi)
+multi %<>% as.data.frame() %>% na.omit()
 
 
 cov.var <- c("driver_city", "vehicle_type", "race", "gender", "make")
