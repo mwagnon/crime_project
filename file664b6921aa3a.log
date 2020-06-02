@@ -1,0 +1,279 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.21)  2 JUN 2020 14:33
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**/private/var/folders/x6/tz_hmstd2q3_0ntrsjs_bsl40000gp/T/Rtmp4Q4SXd/file664b6
+921aa3a.tex
+
+(/private/var/folders/x6/tz_hmstd2q3_0ntrsjs_bsl40000gp/T/Rtmp4Q4SXd/file664b69
+21aa3a.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-04-06> (/Users/ea_sorensen78/Library/TinyTeX/texmf-d
+ist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+) (/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen135
+\ar@mcellbox=\box45
+\extrarowheight=\dimen136
+\NC@list=\toks15
+\extratabsurround=\skip49
+\backup@length=\skip50
+\ar@cellbox=\box46
+) (/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.st
+y
+Package: caption 2020/01/03 v3.4h Customizing captions (AR)
+
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+\captionmargin=\dimen137
+\captionmargin@=\dimen138
+\captionwidth=\dimen139
+\caption@tempdima=\dimen140
+\caption@indent=\dimen141
+\caption@parindent=\dimen142
+\caption@hangindent=\dimen143
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count175
+\c@continuedfloat=\count176
+)
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.st
+y
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.st
+y
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphic
+s.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.
+def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen144
+\Gin@req@width=\dimen145
+) (/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/siunitx/siunitx.st
+y (/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2020-04-06 L3 programming layer (loader) 
+
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-
+pdfmode.def
+File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count177
+\l__pdf_internal_box=\box47
+))
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xp
+arse.sty
+Package: xparse 2020-03-06 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count178
+\g__xparse_grabber_int=\count179
+\l__xparse_m_args_int=\count180
+\l__xparse_v_nesting_int=\count181
+)
+Package: siunitx 2020/02/25 v2.8b A comprehensive (SI) units package
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen146
+))
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e/
+l3keys2e.sty
+Package: l3keys2e 2020-03-06 LaTeX2e option processing using LaTeX3 keys
+)
+\l__siunitx_tmp_box=\box48
+\l__siunitx_tmp_dim=\dimen147
+\l__siunitx_tmp_int=\count182
+\l__siunitx_number_mantissa_length_int=\count183
+\l__siunitx_number_uncert_length_int=\count184
+\l__siunitx_round_int=\count185
+\l__siunitx_process_decimal_int=\count186
+\l__siunitx_process_uncertainty_int=\count187
+\l__siunitx_process_fixed_int=\count188
+\l__siunitx_process_integer_min_int=\count189
+\l__siunitx_process_precision_int=\count190
+\l__siunitx_group_min_int=\count191
+\l__siunitx_angle_marker_box=\box49
+\l__siunitx_angle_unit_box=\box50
+\l__siunitx_angle_marker_dim=\dimen148
+\l__siunitx_angle_unit_dim=\dimen149
+\l__siunitx_unit_int=\count192
+\l__siunitx_unit_denominator_int=\count193
+\l__siunitx_unit_numerator_int=\count194
+\l__siunitx_unit_prefix_int=\count195
+\l__siunitx_unit_prefix_base_int=\count196
+\l__siunitx_unit_prefix_gram_int=\count197
+\l__siunitx_number_product_int=\count198
+\c__siunitx_one_fill_skip=\skip51
+\l__siunitx_table_unit_align_skip=\skip52
+\l__siunitx_table_exponent_dim=\dimen150
+\l__siunitx_table_integer_dim=\dimen151
+\l__siunitx_table_mantissa_dim=\dimen152
+\l__siunitx_table_marker_dim=\dimen153
+\l__siunitx_table_result_dim=\dimen154
+\l__siunitx_table_uncert_dim=\dimen155
+\l__siunitx_table_fill_pre_dim=\dimen156
+\l__siunitx_table_fill_post_dim=\dimen157
+\l__siunitx_table_fill_mid_dim=\dimen158
+\l__siunitx_table_pre_box=\box51
+\l__siunitx_table_post_box=\box52
+\l__siunitx_table_mantissa_box=\box53
+\l__siunitx_table_result_box=\box54
+\l__siunitx_table_number_align_skip=\skip53
+\l__siunitx_table_text_align_skip=\skip54
+)
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.st
+y
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
+
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.c
+fg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
+\everycr=\toks18
+\minrowclearance=\skip55
+)
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.st
+y
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip56
+\multirow@cntb=\count199
+\multirow@dima=\skip57
+\bigstrutjot=\dimen159
+) (/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/tools/hhline.sty
+Package: hhline 2020/01/04 v2.04 Table rule package (DPC)
+) (/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count266
+\calc@Bcount=\count267
+\calc@Adimen=\dimen160
+\calc@Bdimen=\dimen161
+\calc@Askip=\skip58
+\calc@Bskip=\skip59
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count268
+\calc@Cskip=\skip60
+) (/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen162
+\TX@old@table=\dimen163
+\TX@old@col=\dimen164
+\TX@target=\dimen165
+\TX@delta=\dimen166
+\TX@cols=\count269
+\TX@ftn=\toks19
+)
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/threeparttable/three
+parttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box55
+) (/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.st
+y
+\wrapoverhang=\dimen167
+\WF@size=\dimen168
+\c@WF@wrappedlines=\count270
+\WF@box=\box56
+\WF@everypar=\toks20
+Package: wrapfig 2003/01/31  v 3.6
+) (./file664b6921aa3a.aux)
+\openout1 = `file664b6921aa3a.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: threeparttable package is loaded.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopd
+f-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf
+-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+(/Users/ea_sorensen78/Library/TinyTeX/texmf-dist/tex/latex/siunitx/siunitx-abbr
+eviations.cfg
+File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 18.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 18.
+
+Overfull \hbox (51.75043pt too wide) in alignment at lines 341--341
+[][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1{/Users/ea_sorensen78/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
+x.map}] (./file664b6921aa3a.aux) ) 
+Here is how much of TeX's memory you used:
+ 4978 strings out of 482530
+ 116684 string characters out of 5949519
+ 357009 words of memory out of 5000000
+ 20619 multiletter control sequences out of 15000+600000
+ 533747 words of font info for 30 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 41i,16n,46p,338b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
+</Users/ea_sorensen78/Library/TinyTeX/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/ea_sorensen78/Library/Tin
+yTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on file664b6921aa3a.pdf (1 page, 26275 bytes).
+PDF statistics:
+ 16 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -8,7 +8,7 @@ output: html_document
 
 
 ```{r}
-pacman::p_load(dplyr, tidyverse, janitor, lubridate, microsynth)
+pacman::p_load(dplyr, tidyverse, janitor, lubridate, microsynth, jtools)
 
 #load data and clean names
 years_df <- read.csv("multiyear.csv") %>%
@@ -89,7 +89,7 @@ ave_plot
 ```
 
 
-
+GARBAGE
 ```{r}
 
 #clean up date variables, make year and day of year variables
@@ -153,6 +153,51 @@ summary(sea1)
 
 plot_microsynth(sea1)
 
+
+```
+
+
+
+EVENT STUDY (MAYBE)
+```{r}
+
+
+year_comp <- years %>%
+               filter(as.numeric(week) <= 21) 
+
+
+dumb_reg <- lm(speeding ~ year, data = year_comp)
+summary(dumb_reg)
+
+#so speeding is significantly way down in 2020. 
+  
+
+
+
+```
+
+
+
+BEAUTIFICATION
+```{r}
+
+speeding_table = export_summs(speed_lm, results = 'asis', model.names = c("Speeding Violations"), coefs = c("Outside of Event Window" = "r_not", "8 Weeks Before" = "r_neg8", "7 Weeks Before" = "r_neg7", "6 Weeks Before" = "r_neg6", "5 Weeks Before" = "r_neg5", "4 Weeks Before" = "r_neg4", "3 Weeks Before" = "r_neg3", "2 Weeks Before" = "r_neg2", "1 Week Before" = "r_neg1", "Week of" = "r_0", "1 Week After" = "r_1", "2 Weeks After" = "r_2", "3 Weeks After" = "r_3", "4 Weeks After" = "r_4", "5 Weeks After" = "r_5", "6 Weeks After" = "r_6", "7 Weeks After" = "r_7", "8 Weeks After" = "r_8", "9 Weeks After" = "r_9", "10 Weeks After" = "r_10"), digits = getOption("jtools-digits", default = 6), to.file = "PDF", file.name = "crime_reg.pdf")
+
+
+speeding_table
+summary(speed_lm)
+
+
+for_graph <- speed_lm$coefficients %>% as.data.frame()
+for_graph$variable <- rownames(for_graph)
+rownames(for_graph) <- 0:20
+for_graph <- for_graph[-c(0,1), ]
+for_graph$week <- rownames(for_graph)
+for_graph %<>% select(c(week,.)) %>% mutate(week = as.numeric(week))
+
+
+for_graph %>% ggplot(aes(x=week,y=.)) +
+  geom_point()
 
 
 
