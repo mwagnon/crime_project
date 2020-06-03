@@ -77,14 +77,14 @@ vio_df %<>%
 
 #run event study regression
 speed_lm <- lm(violations ~ r_neg8 + r_neg7 + r_neg6 + r_neg5 + r_neg4 + r_neg3 + r_neg2 + r_neg1 + 
-                    r_0 + r_1 + r_2 + r_3 + r_4 + r_5 + r_6 + r_7 + r_8 + r_9 + r_10, data = vio_df)
+                    r_0 + r_1 + r_2 + r_3 + r_4 + r_5 + r_6 + r_7 + r_8 + r_9 + r_10 + r_not, data = vio_df)
 
 huxreg(speed_lm)
 
 
 for_graph <- speed_lm$coefficients %>% as.data.frame()
 for_graph$variable <- rownames(for_graph)
-rownames(for_graph) <- 0:19
+rownames(for_graph) <- 0:20
 for_graph$week <- rownames(for_graph)
 for_graph %<>% select(c(week,.)) %>% mutate(week = as.numeric(week))
 
