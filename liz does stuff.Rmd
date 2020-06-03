@@ -187,20 +187,26 @@ speeding_table = export_summs(speed_lm, results = 'asis', model.names = c("Speed
 speeding_table
 summary(speed_lm)
 
+for_graph <- data.frame(matrix(vector(),21,4))
+for_graph[,1] <- 1:21
+for_graph[,2] <- speed_lm$coefficients
+for_graph[,3:4] <- confint(speed_lm, level = .95)
+for_graph <- for_graph[-c(1,21),]
 
-for_graph <- speed_lm$coefficients %>% as.data.frame()
-for_graph$variable <- rownames(for_graph)
-rownames(for_graph) <- 0:20
-for_graph <- for_graph[-c(0,1), ]
-for_graph$week <- rownames(for_graph)
-for_graph %<>% select(c(week,.)) %>% mutate(week = as.numeric(week))
-for_graph$date <- (as.Date("2020-01-01") + weeks(for_graph$week-1))
+for_graph$date <- (as.Date("2020-01-01") + weeks(as.numeric(for_graph$X1)-1))
 
-for_graph %>% ggplot(aes(x=date,y=.)) +
+
+
+for_graph %>% ggplot(aes(x=date,y=X2)) +
   geom_point() + 
-  geom_smooth(method=lm, se=TRUE) +
-  geom_line(aes(x=as.Date("2020-03-05")), color='red')
+  geom_errorbar(aes(ymax=X3, ymin=X4),color='red') +
+  geom_vline(xintercept = as.Date("2020-03-12"), color='blue', size = 1) +
+  labs(title = 'Coefficients and 95% CI', x = 'Date', y='Traffic Violations')
 
 
 
+```
+
+```{r}
+traffic_cor <- subset(traffic_df, year ==2020 & week >= 11)
 ```

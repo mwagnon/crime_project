@@ -82,6 +82,8 @@ speed_lm <- lm(violations ~ r_neg8 + r_neg7 + r_neg6 + r_neg5 + r_neg4 + r_neg3 
 huxreg(speed_lm)
 
 
+
+
 for_graph <- speed_lm$coefficients %>% as.data.frame()
 for_graph$variable <- rownames(for_graph)
 rownames(for_graph) <- 0:20
